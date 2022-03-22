@@ -1,4 +1,6 @@
 sudo: required
+language: generic
+ - CI=true
 services:
   - docker
 
@@ -6,7 +8,7 @@ before_install:
   - docker build -t d6lab/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true d6lab/react-test npm test -- --coverage
+  - docker run -e CI=true d6lab/react-test npm test
 
 after_success:
   - docker build -t d6lab/multi-client -f ./client
