@@ -9,15 +9,15 @@ script:
   - docker run codes4free/react-test npm ttest -- --coverage
 
 after_success:
-  - docker build -t codes4free/multi-client -f ./client
-  - docker build -t codes4free/multi-nginx -f ./nginx
-  - docker build -t codes4free/multi-server -f ./server
-  - docker build -t codes4free/multi-worker -f ./worker
+  - docker build -t d6lab/multi-client -f ./client
+  - docker build -t d6lab/multi-nginx -f ./nginx
+  - docker build -t d6lab/multi-server -f ./server
+  - docker build -t d6lab/multi-worker -f ./worker
 # Log in to the docker CLI
   -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # take those images and push them to docker hub
-  - docker push codes4free/multi-client
-  - docker push codes4free/multi-nginx
-  - docker push codes4free/multi-server
-  - docker push codes4free/multi-worker
+  - docker push d6lab/multi-client
+  - docker push d6lab/multi-nginx
+  - docker push d6lab/multi-server
+  - docker push d6lab/multi-worker
